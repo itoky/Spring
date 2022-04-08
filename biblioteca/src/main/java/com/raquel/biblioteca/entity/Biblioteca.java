@@ -18,14 +18,7 @@ public class Biblioteca implements Serializable{
 	private String ciudad;
 	
 
-	public Biblioteca() {
-	}
-
-	public Biblioteca(String nombre, String ciudad) {
-		super();
-		this.nombre = nombre;
-		this.ciudad = ciudad;
-	}
+	public Biblioteca() {}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
