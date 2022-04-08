@@ -1,9 +1,22 @@
 package com.raquel.biblioteca.entity;
 
-public class Biblioteca {
+import java.io.Serializable;
 
-	String nombre;
-	String ciudad;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "biblioteca")
+public class Biblioteca implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
+	private Long id;
+	private String nombre;
+	private String ciudad;
+	
 
 	public Biblioteca() {
 	}
@@ -12,6 +25,16 @@ public class Biblioteca {
 		super();
 		this.nombre = nombre;
 		this.ciudad = ciudad;
+	}
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getNombre() {

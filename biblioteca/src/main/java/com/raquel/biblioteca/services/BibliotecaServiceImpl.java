@@ -1,32 +1,28 @@
 package com.raquel.biblioteca.services;
 
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 
+import com.raquel.biblioteca.dao.IBibliotecaDao;
 import com.raquel.biblioteca.entity.Biblioteca;
-import com.raquel.biblioteca.entity.Libro;
 
 
 @Service("serviceRestTemplate")
-public class BibliotecaServiceImpl implements BibliotecaService {
+public class BibliotecaServiceImpl implements IBibliotecaService {
 	@Autowired
-	private RestTemplate clienteRest;
+	private IBibliotecaDao bibliotecaDAO;
 
 	@Override
 	public List<Biblioteca> findAll() {
-		return  Arrays.asList(clienteRest.getForObject("http://servicio-biblioteca/listar", Biblioteca[].class));
+		return (List<Biblioteca>) bibliotecaDAO.findAll();
 		
 	}
 
 	@Override
 	public Biblioteca findById(Long id) {
-		return null;
+		return bibliotecaDAO.findById(id).orElse(null);
 	}
 
 }

@@ -9,12 +9,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.raquel.biblioteca.entity.Biblioteca;
 import com.raquel.biblioteca.entity.Libro;
-import com.raquel.biblioteca.services.BibliotecaService;
+import com.raquel.biblioteca.services.IBibliotecaService;
 
 @RestController
 public class BibliotecaController {
 	@Autowired
-	private BibliotecaService bibliotecaService;
+	private IBibliotecaService bibliotecaService;
 	
 	@GetMapping("/listar")
 	public List<Biblioteca> listar(){
